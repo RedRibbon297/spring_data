@@ -10,6 +10,8 @@
 # Compiled class file
 *.class
 
+/target
+
 #Intellij
 .idea/
 *.iml
