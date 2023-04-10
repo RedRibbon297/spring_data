@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "airplanes")
@@ -22,6 +23,12 @@ public class Airplane {
     //@Column - здесь не обязательно
     private String model;
     private int seats;
+
+    @OneToMany
+    @JoinColumn(name = "airplane_id")
+    //если не делать эту аннотацию то в БД создастся доп. связующая таблица "airplane_passenger"
+    //с айдишниками "airplane_id" и "passengers_id"
+    private List<Passenger> passengers;
 
     public Airplane(String model, int seats) {
         this.model = model;
